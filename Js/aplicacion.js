@@ -22,6 +22,7 @@ $(document).ready(function () {
         $("#btn-cronograma").addClass("active");
     }
 
+    // ACTUALIZAR ESTADOS EN EL CRONOGRAMA
     function actualizarEstados() {
         var filas = document.querySelectorAll("#table_cronograma tbody tr");
 
@@ -45,5 +46,63 @@ $(document).ready(function () {
     }
 
     // Ejecutar la función cada minuto
-    setInterval(actualizarEstados, 10000); // 60000 ms = 1 minuto
+    setInterval(actualizarEstados, 10000); // = 10 segundos
 });
+
+
+// Filtrar las busquedas
+$(document).ready(function () {
+    // Función para realizar el filtrado
+
+    // Evento de clic en el botón de búsqueda
+    $('#buscar').on('click', function () {
+        var objetoFiltro = $('#objeto').val().toLowerCase();
+        var actividadFiltro = $('#actividad_buscar').val().toLowerCase();
+
+        // Mostrar la tabla solo si hay filtros aplicados
+        if (objetoFiltro || actividadFiltro) {
+            $('.tabla-procesos-oculta').show();
+        } else {
+            $('.tabla-procesos-oculta').hide();
+            return; // No hay filtros, salir de la función
+        }
+
+        $('#table_consulta_procesos tbody tr').each(function () {
+            var objeto = $(this).find('td:eq(0)').text().toLowerCase();
+            var actividad = $(this).find('td:eq(4)').text().toLowerCase();
+
+            // Mostrar la fila si hay coincidencia en alguno de los campos
+            if ((objetoFiltro && objeto.includes(objetoFiltro)) || (actividadFiltro && actividad.includes(actividadFiltro))) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    // Función para realizar el filtrado
+    $('#buscar').on('click', function () {
+        var estadoFiltro = $('#estado').val().toLowerCase();
+
+        // Mostrar la tabla solo si hay filtros aplicados
+        if (estadoFiltro) {
+            $('.tabla-cronograma-oculta').show();
+        } else {
+            $('.tabla-cronograma-oculta').hide();
+            return; // No hay filtros, salir de la función
+        }
+
+        $('#table_consulta_cronograma tbody tr').each(function () {
+            var objeto = $(this).find('td:eq(4)').text().toLowerCase();
+
+            // Mostrar la fila si hay coincidencia en alguno de los campos
+            if ((estadoFiltro && objeto.includes(estadoFiltro))) {
+                $(this).show();
+            } else {
+                $('.tabla-cronograma-oculta').hide();
+            }
+        });
+    });
+});
+
+

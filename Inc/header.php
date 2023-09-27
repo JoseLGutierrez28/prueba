@@ -27,7 +27,7 @@
                 </li>
 
                 <section class="icons" id="icon-container">
-                    <a href="http://localhost/prueba/Controllers/ProcesosControllers.php?action=insert" class="links-header">
+                    <a href="http://localhost/prueba/Controllers/procesosControllers.php?action=insert" class="links-header">
                         <div class="icon-box">
                             <i class="fas fa-pencil-alt"></i>
                             <div class="icon-text">Crear</div>
@@ -39,10 +39,12 @@
                         <div class="icon-text">Copiar</div>
                     </div>
 
-                    <div class="icon-box">
-                        <i class="fas fa-search-plus"></i>
-                        <div class="icon-text">Consultar</div>
-                    </div>
+                    <a href="http://localhost/prueba/Controllers/consultarControllers.php?action=view" class="links-header">
+                        <div class="icon-box">
+                            <i class="fas fa-search-plus"></i>
+                            <div class="icon-text">Consultar</div>
+                        </div>
+                    </a>
 
                 </section>
             </ul>

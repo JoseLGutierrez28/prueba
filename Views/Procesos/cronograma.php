@@ -80,22 +80,7 @@ include $headerPath;
         <tbody>
             <?php
 
-            foreach ($objetoretornadoDB as $Cronograma) {
-                $fechaActual = date('Y-m-d H:i');
-                $horaActual = date('H:i');
-
-                // Verificar si la fecha y hora actual son mayores o iguales a la Fecha y Hora de Inicio
-                if ($fechaActual >= $Cronograma->fechaInicio && $horaActual >= $Cronograma->horaInicio) {
-                    // Si se cumple la condición, el proceso está en estado "PUBLICADO"
-                    $Cronograma->estado = 'PUBLICADO';
-                }
-
-                // Verificar si la fecha y hora actual son mayores o iguales a la Fecha y Hora de Cierre
-                if ($fechaActual >= $Cronograma->fechaCierre && $horaActual >= $Cronograma->horaCierre) {
-                    // Si se cumple la condición, el proceso está en estado "EVALUACIÓN"
-                    $Cronograma->estado = 'EVALUACIÓN';
-                }
-            ?>
+            foreach ($objetoretornadoDB as $Cronograma) {?>
 
                 <tr>
                     <td><?php echo $Cronograma->fechaInicio ?></td>
@@ -107,7 +92,6 @@ include $headerPath;
 
 
             <?php } ?>
-
 
         </tbody>
     </table>

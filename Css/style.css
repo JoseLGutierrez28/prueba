@@ -110,3 +110,7 @@ label {
 .btnsavedata {
     margin-top: 28px;
 }
+
+.tabla-cronograma-oculta, .tabla-procesos-oculta {
+    display: none;
+}

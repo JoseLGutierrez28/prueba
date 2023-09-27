@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Mostrarr la información en el input"
             // input.value = 
-            document.getElementById('codigoActividad').value = rowData[6];
+            document.getElementById('codigoActividad').value = rowData[6] + ';' + rowData[7];
             input.placeholder = rowData[7];
 
             // Mostrar toda la información
@@ -79,3 +79,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+//Generar reporte de EXCEL
+function exportToExcel() {
+    const wb = XLSX.utils.book_new();
+
+    // Exportar tabla de cronograma
+    const cronogramaTable = document.getElementById('table_consulta_cronograma');
+    const cronogramaSheet = XLSX.utils.table_to_sheet(cronogramaTable);
+    XLSX.utils.book_append_sheet(wb, cronogramaSheet, 'Cronograma');
+
+    // Exportar tabla de procesos
+    const procesosTable = document.getElementById('table_consulta_procesos');
+    const procesosSheet = XLSX.utils.table_to_sheet(procesosTable);
+    XLSX.utils.book_append_sheet(wb, procesosSheet, 'Procesos');
+
+    // Descargar el archivo
+    XLSX.writeFile(wb, 'ReporteExcel.xlsx');
+}

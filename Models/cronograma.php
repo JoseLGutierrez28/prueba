@@ -1,8 +1,8 @@
 <?php
-
+date_default_timezone_set('America/Bogota');
 include '../Config/conexion.php';
 
-//Modelo encargado de enviar la informacion a la base de datos
+// Modelo encargado de enviar la informacion a la base de datos
 class Cronograma
 {
 
@@ -29,6 +29,34 @@ class Cronograma
         $insertar->execute();
     }
 
+    function actualizarEstadosCronograma()
+    {
+        $instancia = new Conexion();
+        $obtenerCronogramas = $instancia->db->prepare("SELECT * FROM cronograma");
+        $obtenerCronogramas->execute();
+        $cronogramas = $obtenerCronogramas->fetchAll(PDO::FETCH_OBJ);
+
+        foreach ($cronogramas as $cronograma) {
+            $fechaActual = date('Y-m-d');
+            $horaActual = date('H:i');
+
+            // Verificar si la fecha y hora actual son mayores o iguales a la Fecha y Hora de Inicio
+            if ($fechaActual >= $cronograma->fechaInicio && $horaActual >= $cronograma->horaInicio) {
+                // Actualizar el estado a "PUBLICADO"
+                $actualizarEstado = $instancia->db->prepare("UPDATE cronograma SET estado = 'PUBLICADO' WHERE id = ?");
+                $actualizarEstado->bindParam(1, $cronograma->id);
+                $actualizarEstado->execute();
+            }
+
+            // Verificar si la fecha y hora actual son mayores o iguales a la Fecha y Hora de Cierre
+            if ($fechaActual >= $cronograma->fechaCierre && $horaActual >= $cronograma->horaCierre) {
+                // Actualizar el estado a "EVALUACIÓN"
+                $actualizarEstado = $instancia->db->prepare("UPDATE cronograma SET estado = 'EVALUACION' WHERE id = ?");
+                $actualizarEstado->bindParam(1, $cronograma->id);
+                $actualizarEstado->execute();
+            }
+        }
+    }
 
     function mostrarCronograma()
     {
@@ -40,3 +68,12 @@ class Cronograma
         return $objetoretornadoDB;
     }
 }
+
+// Crear una instancia de la clase Cronograma
+$cronograma = new Cronograma();
+
+// Llamar a la función actualizarEstadosCronograma antes de mostrar los datos
+$cronograma->actualizarEstadosCronograma();
+
+// Ahora puedes mostrar los datos
+$datosCronograma = $cronograma->mostrarCronograma();
