@@ -1,0 +1,6 @@
+CREATE TABLE procesos (id int(10) AUTO_INCREMENT, objeto varchar(100)not null, descripcion varchar(100)not null, moneda varchar(5)not null, presupuesto varchar(10)not null, actividad varchar(20)not null, PRIMARY key(id))
+
+CREATE TABLE cronograma(id int(10)AUTO_INCREMENT, fechaInicio varchar(15)not null, horaInicio varchar(15)not null, fechaCierre varchar(15)not null, horaCierre varchar(15)not null, estado varchar(15)not null, PRIMARY KEY(id))
+
+
+

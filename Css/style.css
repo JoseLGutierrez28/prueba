@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 120px;
+    background-color: #003476;
+
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+ul {
+    cursor: pointer;
+    list-style: none;
+    text-align: center;
+}
+
+li {
+    margin-bottom: 8px;
+    font-size: 18px;
+    display: inline-block;
+    color: white;
+}
+
+.icon-box {
+    display: inline-block;
+    margin: 4px;
+    padding: 6px;
+    border: 2px solid white;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.icons {
+    display: none;
+    color: white;
+}
+
+.links-header {
+    text-decoration: none;
+    color: white;
+}
+
+.hrblue {
+    background-color: darkgray;
+    background-image: linear-gradient(to right, blue 50%, transparent 50%);
+    height: 8px;
+    margin-top: 10px;
+    width: 518px;
+    margin-left: 16px;
+}
+
+.btn-groups {
+    width: 40%;
+    height: 50px;
+    margin-left: -8%;
+}
+
+.btn-navigation.active {
+    background-color: #D3D3D3;
+    border-color: #D3D3D3;
+    color: #000;
+}
+
+.btn-navigation {
+    width: 100%;
+}
+
+.container {
+    margin-top: -16px;
+}
+
+.btn-cronograma,
+.btn-information {
+    border: none;
+    background-color: white;
+}
+
+.hryellow {
+    border-top: 4px solid yellow;
+}
+
+.form {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.tittle {
+    margin-left: 6%;
+}
+
+label {
+    margin-top: 20px;
+}
+
+.division-button {
+    margin-top: 60px;
+}
+
+.btnsavedata {
+    margin-top: 28px;
+}
