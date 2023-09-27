@@ -17,6 +17,7 @@ class Procesos
     {
     }
 
+    // Funcion para insertar los datos recibios a la DB
     function insertarProceso()
     {
         $instancia = new Conexion();

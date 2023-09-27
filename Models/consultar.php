@@ -13,6 +13,7 @@ class Consultar
     }
 
 
+    // Funcion para capturar toda la informacion de x tabla. creando la instancia de la conexion
     function mostrarCronograma()
     {
         $instancia = new Conexion();
@@ -23,6 +24,7 @@ class Consultar
         return $objetoretornadoDBCronograma;
     }
 
+    // Funcion para capturar toda la informacion de x tabla. creando la instancia de la conexion
     function mostrarProcesos()
     {
         $instancia = new Conexion();

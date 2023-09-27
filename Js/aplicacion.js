@@ -1,8 +1,11 @@
 $(document).ready(function () {
+    // Click al botn de acceder para mostrar los iconos de navegacion
     $("#proceso-eventos").click(function () {
         $("#icon-container").toggle();
+        $("#btnAcceder").remove();
     });
 
+    // Redireccionar segun al icono o tarea que desea realizar
     $('#btn-informacion').click(function () {
         location.href = "http://localhost/prueba/Controllers/procesosControllers.php?action=insert";
     })
@@ -50,16 +53,14 @@ $(document).ready(function () {
 });
 
 
-// Filtrar las busquedas
+// Filtrar las busquedas de los procesos
 $(document).ready(function () {
-    // Función para realizar el filtrado
-
-    // Evento de clic en el botón de búsqueda
+    // Evento de click en el botón de búsqueda para filtrar los resultados
     $('#buscar').on('click', function () {
         var objetoFiltro = $('#objeto').val().toLowerCase();
         var actividadFiltro = $('#actividad_buscar').val().toLowerCase();
 
-        // Mostrar la tabla solo si hay filtros aplicados
+        // Se muestra la tabla solo si hay filtros que coincidan
         if (objetoFiltro || actividadFiltro) {
             $('.tabla-procesos-oculta').show();
         } else {
@@ -71,7 +72,7 @@ $(document).ready(function () {
             var objeto = $(this).find('td:eq(0)').text().toLowerCase();
             var actividad = $(this).find('td:eq(4)').text().toLowerCase();
 
-            // Mostrar la fila si hay coincidencia en alguno de los campos
+            // Mostrar las fila si hay coincidencia en alguno de los campos
             if ((objetoFiltro && objeto.includes(objetoFiltro)) || (actividadFiltro && actividad.includes(actividadFiltro))) {
                 $(this).show();
             } else {
@@ -79,12 +80,15 @@ $(document).ready(function () {
             }
         });
     });
+});
 
-    // Función para realizar el filtrado
+$(document).ready(function () {
+
+    // Función para realizar el filtrado del cronograma
     $('#buscar').on('click', function () {
         var estadoFiltro = $('#estado').val().toLowerCase();
 
-        // Mostrar la tabla solo si hay filtros aplicados
+        // Se muestra la tabla solo si hay filtros que coincidan
         if (estadoFiltro) {
             $('.tabla-cronograma-oculta').show();
         } else {
@@ -95,7 +99,7 @@ $(document).ready(function () {
         $('#table_consulta_cronograma tbody tr').each(function () {
             var objeto = $(this).find('td:eq(4)').text().toLowerCase();
 
-            // Mostrar la fila si hay coincidencia en alguno de los campos
+            // Mostrar las fila si hay coincidencia en alguno de los campos
             if ((estadoFiltro && objeto.includes(estadoFiltro))) {
                 $(this).show();
             } else {
@@ -104,5 +108,6 @@ $(document).ready(function () {
         });
     });
 });
+
 
 

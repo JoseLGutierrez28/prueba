@@ -17,6 +17,7 @@ class Cronograma
     {
     }
 
+    // Funcion para insertar los datos recibios a la DB
     function insertarCronogramaDB()
     {
         $instancia = new Conexion();
@@ -29,6 +30,7 @@ class Cronograma
         $insertar->execute();
     }
 
+    // Funcion pra actilizar el estado en la DB del cronograma
     function actualizarEstadosCronograma()
     {
         $instancia = new Conexion();
@@ -40,7 +42,7 @@ class Cronograma
             $fechaActual = date('Y-m-d');
             $horaActual = date('H:i');
 
-            // Verificar si la fecha y hora actual son mayores o iguales a la Fecha y Hora de Inicio
+            // Se verifica si la fecha y hora actual son mayores o iguales a la Fecha y Hora de Inicio
             if ($fechaActual >= $cronograma->fechaInicio && $horaActual >= $cronograma->horaInicio) {
                 // Actualizar el estado a "PUBLICADO"
                 $actualizarEstado = $instancia->db->prepare("UPDATE cronograma SET estado = 'PUBLICADO' WHERE id = ?");
@@ -48,7 +50,7 @@ class Cronograma
                 $actualizarEstado->execute();
             }
 
-            // Verificar si la fecha y hora actual son mayores o iguales a la Fecha y Hora de Cierre
+            // Se vrifica si la fecha y hora actual son mayores o iguales a la Fecha y Hora de Cierre
             if ($fechaActual >= $cronograma->fechaCierre && $horaActual >= $cronograma->horaCierre) {
                 // Actualizar el estado a "EVALUACIÓN"
                 $actualizarEstado = $instancia->db->prepare("UPDATE cronograma SET estado = 'EVALUACION' WHERE id = ?");
@@ -58,6 +60,7 @@ class Cronograma
         }
     }
 
+    // Funcion para capturar toda la informacion de x tabla. creando la instancia de la conexion
     function mostrarCronograma()
     {
         $instancia = new Conexion();

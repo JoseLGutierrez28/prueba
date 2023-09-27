@@ -17,4 +17,3 @@ CREATE TABLE cronograma (
     estado VARCHAR(15) NOT NULL,
     PRIMARY KEY (id)
 );
-

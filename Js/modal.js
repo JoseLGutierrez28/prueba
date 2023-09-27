@@ -80,16 +80,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-//Generar reporte de EXCEL
+//Generar reporte de EXCEL al filtrar los campos. SE CREAN 2 HOJAS PARA CADA TABLA
 function exportToExcel() {
     const wb = XLSX.utils.book_new();
 
-    // Exportar tabla de cronograma
+    // Exportar la tabla de cronograma
     const cronogramaTable = document.getElementById('table_consulta_cronograma');
     const cronogramaSheet = XLSX.utils.table_to_sheet(cronogramaTable);
     XLSX.utils.book_append_sheet(wb, cronogramaSheet, 'Cronograma');
 
-    // Exportar tabla de procesos
+    // Exportar la tabla de procesos
     const procesosTable = document.getElementById('table_consulta_procesos');
     const procesosSheet = XLSX.utils.table_to_sheet(procesosTable);
     XLSX.utils.book_append_sheet(wb, procesosSheet, 'Procesos');

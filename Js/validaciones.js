@@ -1,20 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtén una referencia al formulario
+    // Capturar formulario a validar
     const formulario = document.querySelector('#form_procesos');
 
-    // Agrega un evento al formulario cuando se envíe
+    // Evento al formulario cuando se envíe
     formulario.addEventListener('submit', function (event) {
-        // Evita el envío del formulario por defecto
+        // Envia el formulario sin recargar la pagina
         event.preventDefault();
 
-        // Realiza la validación de campos
+        // Obtener los valores de los campos del formulario
         const objeto = formulario.querySelector('input[name="objeto"]').value;
         const descripcion = formulario.querySelector('input[name="descripcion"]').value;
         const moneda = formulario.querySelector('select[name="moneda"]').value;
         const presupuesto = formulario.querySelector('input[name="presupuesto"]').value;
         const actividad = formulario.querySelector('input[name="actividad"]').value;
 
-        // Ejemplo de validación simple para el campo "objeto"
+        // Se valida que el campo OBJETO no este vacio eliminando los espacios al inicio y fin"
         if (objeto.trim() === '') {
             alert('El campo "Objeto" es obligatorio.');
             return;
@@ -63,20 +63,20 @@ document.addEventListener('DOMContentLoaded', function () {
 // ---------------------- Validaciones del cronograma -----------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtén referencias a los elementos del formulario
+    // Capturar formulario a validar
     const fechaInicioInput = document.getElementById('fechaInicio');
     const fechaCierreInput = document.getElementById('fechaCierre');
     const horaInicioInput = document.getElementById('horaInicio');
     const horaCierreInput = document.getElementById('horaCierre');
     const publicarProcesoBtn = document.getElementById('publicarProceso');
 
-    // Agrega un controlador de eventos para validar cuando cambien los campos
+    // Eventos para validar cuando cambien los campos de las fechas u horas
     fechaInicioInput.addEventListener('input', validarFechaInicio);
     fechaCierreInput.addEventListener('input', validarFechaCierre);
     horaInicioInput.addEventListener('input', validarHoraInicio);
     horaCierreInput.addEventListener('input', validarHoraCierre);
 
-    // Función para validar la fecha de inicio
+    // Validar la fecha de inicio
     function validarFechaInicio() {
         const fechaInicio = new Date(fechaInicioInput.value + 'T' + horaInicioInput.value);
         const fechaActual = new Date();
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función para validar la fecha de cierre
+    // Validar la fecha de cierre
     function validarFechaCierre() {
         const fechaInicio = new Date(fechaInicioInput.value + 'T' + horaInicioInput.value);
         const fechaCierre = new Date(fechaCierreInput.value + 'T' + horaCierreInput.value);
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función para validar la hora de inicio
+    // Validar la hora de inicio
     function validarHoraInicio() {
         const fechaInicio = new Date(fechaInicioInput.value + 'T' + horaInicioInput.value);
         const fechaActual = new Date();
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función para validar la hora de cierre
+    // Validar la hora de cierre
     function validarHoraCierre() {
         const fechaInicio = new Date(fechaInicioInput.value + 'T' + horaInicioInput.value);
         const fechaCierre = new Date(fechaCierreInput.value + 'T' + horaCierreInput.value);
@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
         else publicarProcesoBtn.disabled = false;
-
     }
 });
 
